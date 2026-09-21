@@ -1,22 +1,17 @@
 package in.strikes.crudSpringBootDemo.respository;
 
 import in.strikes.crudSpringBootDemo.entity.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
-public class StudentRepository {
+import java.util.List;
+import java.util.Optional;
 
+//@Repository
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    public Student saveStudent(Student studReq) {
-        //save to database
-        System.out.println("Inside Student Respository");
-        Student stu = new Student();
-        stu.setName("Manohar");
-        stu.setAge(20);
-        stu.setEmail("vnmanohar.raju13@gmail.com");
-        stu.setId((long)1);
-        stu.setRollNo(37);
-        stu.setSubject("Spring boot");
-        return stu;
-    }
+    Optional<Student> findByIdAndDeletedIsFalse(Long id);
+
+    List<Student> findByDeletedIsFalse();
 }

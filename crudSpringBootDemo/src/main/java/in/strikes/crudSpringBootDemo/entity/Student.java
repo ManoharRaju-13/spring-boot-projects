@@ -1,40 +1,59 @@
 package in.strikes.crudSpringBootDemo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jdk.jfr.Enabled;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private int age;
     private int rollNo;
     private String email;
     private String subject;
+    private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public int getAge() {
+
         return age;
     }
 
     public void setAge(int age) {
+
         this.age = age;
     }
 
     public int getRollNo() {
+
         return rollNo;
     }
 
     public void setRollNo(int rollNo) {
+
         this.rollNo = rollNo;
     }
 
